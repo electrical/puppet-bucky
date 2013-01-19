@@ -1,0 +1,106 @@
+# Standard debug and log level
+debug = False
+log_level = "INFO"
+
+# Whether to print the entire stack trace for errors encountered
+# when loading the config file
+full_trace = False
+
+<%- if scope.lookupvar('bucky::metricsd_enabled') == true -%>
+# Basic metricsd conifguration
+metricsd_ip = "<%= scope.lookupvar('bucky::metricsd_ip') %>"
+metricsd_port = <%= scope.lookupvar('bucky::metricsd_port') %>
+metricsd_enabled = True
+
+# The default interval between flushes of metric data to Graphite
+metricsd_default_interval = <%= scope.lookupvar('bucky::metricsd_flushtime') %>
+
+# You can specify the frequency of flushes to Graphite based on
+# the metric name used for each metric. These are specified as
+# regular expressions. An entry in this list should be a 3-tuple
+# that is: (regexp, frequency, priority)
+#
+# The regexp is applied with the match method. Frequency should be
+# in seconds. Priority is used to break ties when a metric name
+# matches more than one handler. (The largest priority wins)
+metricsd_handlers = <%= scope.lookupvar('bucky::metricsd_handlers') %>
+<%- else -%>
+metricsd_enabled = False
+<%- end -%>
+
+<%- if collectd_enabled == true -%>
+# Basic collectd configuration
+collectd_ip = "<%= scope.lookupvar('bucky::collectd_ip') %>"
+collectd_port = <%= scope.lookupvar('bucky::collectd_port') %>
+collectd_enabled = True
+
+# A list of file names for collectd types.db
+# files.
+collectd_types = <%= scope.lookupvar('bucky::collectd_types') %>
+
+# A mapping of plugin names to converter callables. These are
+# explained in more detail in the README.
+collectd_converters = <%= scope.lookupvar('bucky::collectd_converters') %>
+
+# Whether to load converters from entry points. The entry point
+# used to define converters is 'bucky.collectd.converters'.
+collectd_use_entry_points = <%= scope.lookupvar('bucky::collectd_use_entry_points') %>
+
+<%- else -%>
+collectd_enabled = False
+<%- end -%>
+
+<%- if scope.lookupvar('bucky::statsd_enabled') == true -%>
+# Basic statsd configuration
+statsd_ip = "<%= scope.lookupvar('bucky::statsd_ip') %>"
+statsd_port = <%= scope.lookupvar('bucky::statsd_port') %>
+statsd_enabled = True
+
+# How often stats should be flushed to Graphite.
+statsd_flush_time = <%= scope.lookupvar('bucky::statsd_flushtime') %>
+<%- else -%>
+statsd_enabled = False
+<%- end -%>
+
+# Basic Graphite configuration
+graphite_ip = "<%= scope.lookupvar('bucky::graphite_host') %>"
+graphite_port = <%= scope.lookupvar('bucky::graphite_port') %>
+
+# If the Graphite connection fails these numbers define how it
+# will reconnect. The max reconnects applies each time a
+# disconnect is encountered and the reconnect delay is the time
+# in seconds between connection attempts. Setting max reconnects
+# to a negative number removes the limit.
+graphite_max_reconnects = <%= scope.lookupvar('bucky::graphite_max_reconnect') %>
+graphite_reconnect_delay = <%= scope.lookupvar('bucky::graphite_reconnect_delay') %>
+
+# Configuration for sending metrics to Graphite via the pickle
+# interface. Be sure to edit graphite_port to match the settings
+# on your Graphite cache/relay.
+graphite_pickle_enabled = <%= scope.lookupvar('bucky::graphite_pickle_enable') %>
+graphite_pickle_buffer_size = <%= scope.lookupvar('bucky::graphite_pickle_buffer_size') %>
+
+# Bucky provides these settings to allow the system wide
+# configuration of how metric names are processed before
+# sending to Graphite.
+#
+# Prefix and postfix allow to tag all values with some value.
+name_prefix = <%= scope.lookupvar('bucky::name_prefix') %>
+name_postfix = <%= scope.lookupvar('bucky::name_postfix') %>
+
+# The replacement character is used to munge any '.' characters
+# in name components because it is special to Graphite. Setting
+# this to None will prevent this step.
+name_replace_char = '<%= scope.lookupvar('bucky::name_replace_char') %>'
+
+# Optionally strip duplicates in path components. For instance
+# a.a.b.c.c.b would be rewritten as a.b.c.b
+name_strip_duplicates = <%= scope.lookupvar('bucky::name_strip_duplicates') %>
+
+# Bucky reverses hostname components to improve the locality
+# of metric values in Graphite. For instance, "node.company.tld"
+# would be rewritten as "tld.company.node". This setting allows
+# for the specification of hostname components that should
+# be stripped from hostnames. For instance, if "company.tld"
+# were specified, the previous example would end up as "node".
+name_host_trim = <%= scope.lookupvar('bucky::name_host_trim') %>
