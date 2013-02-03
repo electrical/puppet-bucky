@@ -28,7 +28,7 @@ class bucky::files {
     mode    => '0755',
     owner   => 'root',
     group   => 'root',
-    source  => "puppet:///modules/${module_name}/etc/init.d/bucky",
+    source  => "puppet:///modules/${module_name}/etc/init.d/${bucky::params::initscript}",
   }
 
 }

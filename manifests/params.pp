@@ -58,6 +58,7 @@ class bucky::params {
   $collectd_use_entry_points = 'True'
 
   # statsd
+  $statsd_enabled   = false
   $statsd_ip        = '127.0.0.1'
   $statsd_port      = '8125'
   $statsd_flushtime = '10.0'
@@ -67,14 +68,14 @@ class bucky::params {
   $graphite_port               = '2003'
   $graphite_max_reconnect      = '3'
   $graphite_reconnect_delay    = '5'
-  $graphite_pickle_enable      = false
+  $graphite_pickle_enable      = 'False'
   $graphite_pickle_buffer_size = '500'
 
   # general settings
   $name_prefix           = 'None'
   $name_postfix          = 'None'
   $name_replace_char     = '_'
-  $name_strip_duplicates = true
+  $name_strip_duplicates = 'True'
   $name_host_trim        = '[]'
 
   #### Internal module values
@@ -98,12 +99,14 @@ class bucky::params {
   # service parameters
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific': {
+      $initscript         = 'bucky.RedHat'
       $service_name       = 'bucky'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
     }
     'Debian', 'Ubuntu': {
+      $initscript         = 'bucky.Debian'
       $service_name       = 'bucky'
       $service_hasrestart = true
       $service_hasstatus  = true

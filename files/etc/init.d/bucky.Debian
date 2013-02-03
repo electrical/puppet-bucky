@@ -1,0 +1,97 @@
+#!/bin/sh
+#
+# /etc/init.d/bucky
+# init script for Bucky.
+#
+# Modified for LSB compliance by Glenn Aaldering <gaaldering@ebay.com>.
+
+### BEGIN INIT INFO
+# Provides:          bucky
+# Required-Start:    $syslog $named $network $time
+# Required-Stop:     $syslog $named $network $time
+# Should-Start:      
+# Should-Stop:       
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Bucky
+# Description:       Bucky
+### END INIT INFO
+
+NAME=bucky
+DESC="Bucky"
+DEFAULT=/etc/default/$NAME
+
+if [ `id -u` -ne 0 ]; then
+   echo "You need root privileges to run this script"
+   exit 1
+fi
+
+. /lib/lsb/init-functions
+
+if [ -r /etc/default/rcS ]; then
+   . /etc/default/rcS
+fi
+
+
+if [ -f "$DEFAULT" ]; then
+   . "$DEFAULT"
+fi
+
+PIDFILE='/var/run/bucky.pid'
+DAEMON='/usr/local/bin/bucky'
+CONFIG='/etc/bucky/bucky.conf'
+
+
+RETVAL=0
+
+bucky_start() {
+  log_daemon_msg "Starting $DESC"
+  if pidofproc -p "$PIDFILE" >/dev/null; then
+    log_action_end_msg 3 "Already running"
+    exit 0
+  fi
+  start-stop-daemon --exec $DAEMON -b -S -m -p $PIDFILE -- $CONFIG
+  log_end_msg $?
+}
+
+bucky_stop() {
+  log_daemon_msg "Stopping $DESC"
+  start-stop-daemon -K -p $PIDFILE
+  rm -rf $PIDFILE
+  log_end_msg $?
+}
+
+bucky_status() {
+  if pidofproc -p "$PIDFILE" >/dev/null; then
+    log_action_end_msg 0 "running"
+    exit 0
+  else
+    if [ -e "$PIDFILE" ]; then
+      log_action_end_msg 1 "failed to start"
+      exit 1
+    else
+      log_action_end_msg 0 "not running"
+      exit 3
+    fi
+  fi
+}
+
+case "$1" in
+  start)
+    bucky_start
+    ;;
+  stop)
+    bucky_stop
+    ;;
+  restart)
+    bucky_stop
+    bucky_start
+    ;;
+  status)
+    bucky_status
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+    ;;
+esac
