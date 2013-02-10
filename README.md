@@ -40,7 +40,7 @@ For the meaning of all variables please check the bucky website.
        collectd_port             => 25826
        collectd_types            => []
        collectd_converters       => {}
-       collectd_use_entry_points => true
+       collectd_use_entry_points => 'True'
 
 ### metricsd
 
@@ -56,7 +56,7 @@ For the meaning of all variables please check the bucky website.
        graphite_port               => 2003
        graphite_max_reconnect      => 3
        graphite_reconnect_delay    => 5
-       graphite_pickle_enable      => false
+       graphite_pickle_enable      => 'False'
        graphite_pickle_buffer_size => 500
 
 ### General settings
@@ -64,6 +64,6 @@ For the meaning of all variables please check the bucky website.
        name_prefix           => 'None'
        name_postfix          => 'None'
        name_replace_char     => '_'
-       name_strip_duplicates => true
+       name_strip_duplicates => 'True'
        name_host_trim        => []
     
