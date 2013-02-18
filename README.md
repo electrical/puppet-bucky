@@ -4,7 +4,7 @@ A puppet module for managing and configuring bucky
 
 https://github.com/cloudant/bucky
 
-This module is puppet 3 tested
+[![Build Status](https://travis-ci.org/electrical/puppet-bucky.png?branch=master)](https://travis-ci.org/electrical/puppet-bucky)
 
 ## Usage
 

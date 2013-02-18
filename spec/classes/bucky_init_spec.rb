@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'bucky', :type => 'class' do
 
-  context "On a Debian OS" do
+  context "On Debian OS" do
     let :facts do
       {
         :operatingsystem => 'Debian'
@@ -29,7 +29,7 @@ describe 'bucky', :type => 'class' do
     it { should contain_file('bucky_config') }
   end
 
-   context "On an Ubuntu OS" do
+   context "On Ubuntu OS" do
     let :facts do
       {
         :operatingsystem => 'Ubuntu'
@@ -57,7 +57,7 @@ describe 'bucky', :type => 'class' do
   
   end
 
-  context "On a CentOS OS " do
+  context "On CentOS OS " do
     let :facts do
       {
         :operatingsystem => 'CentOS'
@@ -85,7 +85,7 @@ describe 'bucky', :type => 'class' do
    
   end
 
-  context "On a RedHat OS " do
+  context "On RedHat OS " do
     let :facts do
       {
         :operatingsystem => 'Redhat'
@@ -113,7 +113,7 @@ describe 'bucky', :type => 'class' do
     
   end
 
-  context "On a Fedora OS " do
+  context "On Fedora OS " do
     let :facts do
       {
         :operatingsystem => 'Fedora'
@@ -141,7 +141,7 @@ describe 'bucky', :type => 'class' do
   
   end
 
-  context "On a Scientific OS " do
+  context "On Scientific OS " do
     let :facts do
       {
         :operatingsystem => 'Scientific'
@@ -169,7 +169,7 @@ describe 'bucky', :type => 'class' do
    
   end
 
-  context "On a Amazon OS " do
+  context "On Amazon OS " do
     let :facts do
       {
         :operatingsystem => 'Amazon'
@@ -197,7 +197,7 @@ describe 'bucky', :type => 'class' do
    
   end
 
-  context "On an unknown OS with no package name specified" do
+  context "On an unknown OS" do
     let :facts do
       {
         :operatingsystem => 'Darwin'
