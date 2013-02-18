@@ -82,7 +82,7 @@ class bucky::params {
 
   # packages
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific': {
+    'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
       $package = [ 'bucky' ]
     }
@@ -98,7 +98,7 @@ class bucky::params {
 
   # service parameters
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific': {
+    'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       $initscript         = 'bucky.RedHat'
       $service_name       = 'bucky'
       $service_hasrestart = true

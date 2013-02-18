@@ -23,7 +23,7 @@
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
 class bucky::config {
- 
+
   file { '/etc/bucky':
     ensure => directory,
     mode   => '0644',
