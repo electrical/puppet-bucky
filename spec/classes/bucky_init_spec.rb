@@ -208,5 +208,76 @@ describe 'bucky', :type => 'class' do
       expect { should raise_error(Puppet::Error) }
     }
   end
+
+  context "Check Parameters" do
+      
+    let :facts do
+      {
+        :operatingsystem => 'Debian'
+      }
+    end
+
+    context "No parameters set" do
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/collectd_enabled = False/)
+      end
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/statsd_enabled = False/)
+      end
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/metricsd_enabled = False/)
+      end
+
+    end
+
+    context "collectd_enabled => true" do
+      let :params do
+        {
+          :collectd_enabled => true,
+        }
+      end
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/collectd_enabled = True/)
+      end
+
+    end
+
+    context "statsd_enabled => true" do
+      let :params do
+        {
+          :statsd_enabled => true,
+        }
+      end
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/statsd_enabled = True/)
+      end
+
+    end
+
+    context "metricsd_enabled => true" do
+      let :params do
+        {
+          :metricsd_enabled => true,
+        }
+      end
+
+      it do
+        should contain_file('bucky_config') \
+          .with_content(/metricsd_enabled = True/)
+      end
+
+    end
+
+  end
  
 end

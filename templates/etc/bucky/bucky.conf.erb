@@ -28,7 +28,7 @@ metricsd_handlers = <%= scope.lookupvar('bucky::metricsd_handlers') %>
 metricsd_enabled = False
 <%- end -%>
 
-<%- if collectd_enabled == true -%>
+<%- if scope.lookupvar('bucky::collectd_enabled') == true -%>
 # Basic collectd configuration
 collectd_ip = "<%= scope.lookupvar('bucky::collectd_ip') %>"
 collectd_port = <%= scope.lookupvar('bucky::collectd_port') %>
