@@ -44,7 +44,7 @@ For the meaning of all variables please check the bucky website.
 
 ### metricsd
 
-       metricsd_enabled     => true
+       metricsd_enabled    => true
        metricsd_ip         => '127.0.0.1'
        metricsd_port       => 23632
        metricsd_flush_time => 10
