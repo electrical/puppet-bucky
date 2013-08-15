@@ -54,8 +54,8 @@ class bucky::package {
   # action
   package { $bucky::params::package:
     ensure   => $package_ensure,
-    provider => 'pip'
-    require  => Class['python']
+    provider => 'pip',
+    require  => Class['python'],
   }
 
 }
