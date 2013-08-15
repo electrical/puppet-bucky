@@ -95,7 +95,7 @@ class bucky(
   $collectd_types              = $bucky::params::collectd_types,
   $collectd_converters         = $bucky::params::collectd_converters,
   $collectd_use_entry_points   = $bucky::params::collectd_use_entry_points,
-  $grahite_host                = $bucky::params::graphite_host,
+  $graphite_host               = $bucky::params::graphite_host,
   $graphite_port               = $bucky::params::graphite_port,
   $graphite_max_reconnect      = $bucky::params::graphite_max_reconnect,
   $graphite_reconnect_delay    = $bucky::params::graphite_reconnect_delay,
