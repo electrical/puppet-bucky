@@ -52,7 +52,7 @@ For the meaning of all variables please check the bucky website.
 
 ### graphite
 
-       grahite_host                => '127.0.0.1'
+       graphite_host               => '127.0.0.1'
        graphite_port               => 2003
        graphite_max_reconnect      => 3
        graphite_reconnect_delay    => 5
