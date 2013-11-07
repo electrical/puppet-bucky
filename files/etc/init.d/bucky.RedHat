@@ -34,9 +34,10 @@ start() {
     local PID=`pgrep -f "${bucky} ${config}"`
     echo $PID > ${pidfile}
 
+    [ $RETVAL -eq 0 ] && (touch ${lockfile}; echo_success) || echo_failure
     echo
-        [ $RETVAL = 0 ] && touch ${lockfile}
-        return $RETVAL
+
+    return $RETVAL
 }
 
 stop() {
