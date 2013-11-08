@@ -82,7 +82,7 @@ case "$1" in
         rh_status
     ;;
     *)
-        echo $"Usage: $0 {start|stop|status|restart|reload|force-reload|condrestart|once|genconfig}"
+        echo $"Usage: $0 {start|stop|restart|condrestart|try-restart|status}"
         exit 1
 esac
 
