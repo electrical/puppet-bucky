@@ -14,6 +14,7 @@ lockfile='/var/lock/subsys/bucky'
 pidfile='/var/run/bucky.pid'
 bucky='/usr/bin/bucky'
 config='/etc/bucky/bucky.conf'
+logfile='/var/log/bucky.log'
 
 RETVAL=0
 
@@ -28,7 +29,7 @@ fi
 
 start() {
     echo -n $"Starting bucky daemon: "
-    $bucky $config &
+    $bucky $config >> $logfile 2>&1 &
     RETVAL=$?
 
     local PID=`pgrep -f "${bucky} ${config}"`
