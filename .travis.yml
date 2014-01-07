@@ -21,4 +21,4 @@ matrix:
 gemfile: .gemfile
 notifications:
   email:
-    - richard@ispavailability.com
+    - github.bucky2@mrsecure.org

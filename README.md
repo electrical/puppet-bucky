@@ -2,25 +2,24 @@
 
 A puppet module for managing and configuring bucky
 
-https://github.com/cloudant/bucky
+https://github.com/trbs/bucky2
 
-[![Build Status](https://travis-ci.org/electrical/puppet-bucky.png?branch=master)](https://travis-ci.org/electrical/puppet-bucky)
 
 ## Usage
 
 Installation, make sure service is running and will be started at boot time:
 
-     class { 'bucky': }
+     class { 'bucky2': }
 
 Removal/decommissioning:
 
-     class { 'bucky':
+     class { 'bucky2':
        ensure => 'absent',
      }
 
 Install everything but disable service(s) afterwards:
 
-     class { 'bucky':
+     class { 'bucky2':
        status => 'disabled',
      }
 
