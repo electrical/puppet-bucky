@@ -1,24 +1,24 @@
 #!/bin/sh
 #
-# /etc/init.d/bucky
-# init script for Bucky.
+# /etc/init.d/bucky2
+# init script for Bucky2.
 #
 # Modified for LSB compliance by Glenn Aaldering <gaaldering@ebay.com>.
 
 ### BEGIN INIT INFO
-# Provides:          bucky
+# Provides:          bucky2
 # Required-Start:    $syslog $named $network $time
 # Required-Stop:     $syslog $named $network $time
 # Should-Start:      
 # Should-Stop:       
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Bucky
-# Description:       Bucky
+# Short-Description: Bucky2
+# Description:       Bucky2
 ### END INIT INFO
 
-NAME=bucky
-DESC="Bucky"
+NAME=bucky2
+DESC="Bucky2"
 DEFAULT=/etc/default/$NAME
 
 if [ `id -u` -ne 0 ]; then
@@ -37,14 +37,14 @@ if [ -f "$DEFAULT" ]; then
    . "$DEFAULT"
 fi
 
-PIDFILE='/var/run/bucky.pid'
-DAEMON='/usr/local/bin/bucky'
-CONFIG='/etc/bucky/bucky.conf'
+PIDFILE='/var/run/bucky2.pid'
+DAEMON='/usr/local/bin/bucky2'
+CONFIG='/etc/bucky2/bucky2.conf'
 
 
 RETVAL=0
 
-bucky_start() {
+bucky2_start() {
   log_daemon_msg "Starting $DESC"
   if pidofproc -p "$PIDFILE" >/dev/null; then
     log_action_end_msg 3 "Already running"
@@ -54,14 +54,14 @@ bucky_start() {
   log_end_msg $?
 }
 
-bucky_stop() {
+bucky2_stop() {
   log_daemon_msg "Stopping $DESC"
   start-stop-daemon -K -p $PIDFILE
   rm -rf $PIDFILE
   log_end_msg $?
 }
 
-bucky_status() {
+bucky2_status() {
   if pidofproc -p "$PIDFILE" >/dev/null; then
     log_action_end_msg 0 "running"
     exit 0
@@ -78,17 +78,17 @@ bucky_status() {
 
 case "$1" in
   start)
-    bucky_start
+    bucky2_start
     ;;
   stop)
-    bucky_stop
+    bucky2_stop
     ;;
   restart)
-    bucky_stop
-    bucky_start
+    bucky2_stop
+    bucky2_start
     ;;
   status)
-    bucky_status
+    bucky2_status
     ;;
   *)
     echo "Usage: $0 {start|stop|restart|status}"

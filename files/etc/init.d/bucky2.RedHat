@@ -1,20 +1,20 @@
 #!/bin/bash
-# bucky        Init script for running the bucky daemon
+# bucky2        Init script for running the bucky2 daemon
 #
 #
 # chkconfig: - 98 02
 #
 # description: some description
-# processname: bucky
+# processname: bucky2
 
 PATH=/usr/bin:/sbin:/bin:/usr/sbin
 export PATH
 
-lockfile='/var/lock/subsys/bucky'
-pidfile='/var/run/bucky.pid'
-bucky='/usr/bin/bucky'
-config='/etc/bucky/bucky.conf'
-logfile='/var/log/bucky.log'
+lockfile='/var/lock/subsys/bucky2'
+pidfile='/var/run/bucky2.pid'
+bucky2='/usr/bin/bucky2'
+config='/etc/bucky2/bucky2.conf'
+logfile='/var/log/bucky2.log'
 
 RETVAL=0
 
@@ -28,11 +28,11 @@ if status | grep -q -- '-p' 2>/dev/null; then
 fi
 
 start() {
-    echo -n $"Starting bucky daemon: "
-    $bucky $config >> $logfile 2>&1 &
+    echo -n $"Starting bucky2 daemon: "
+    $bucky2 $config >> $logfile 2>&1 &
     RETVAL=$?
 
-    local PID=`pgrep -f "${bucky} ${config}"`
+    local PID=`pgrep -f "${bucky2} ${config}"`
     echo $PID > ${pidfile}
 
     [ $RETVAL -eq 0 ] && (touch ${lockfile}; echo_success) || echo_failure
@@ -42,8 +42,8 @@ start() {
 }
 
 stop() {
-    echo -n $"Stopping bucky daemon: "
-    killproc $pidopts $bucky
+    echo -n $"Stopping bucky2 daemon: "
+    killproc $pidopts $bucky2
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && rm -f ${lockfile} ${pidfile}
@@ -55,7 +55,7 @@ restart() {
 }
 
 rh_status() {
-    status $pidopts $bucky
+    status $pidopts $bucky2
     RETVAL=$?
     return $RETVAL
 }

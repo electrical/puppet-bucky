@@ -1,4 +1,4 @@
-# == Class: bucky::params
+# == Class: bucky2::params
 #
 # This class exists to
 # 1. Declutter the default value assignment for class parameters.
@@ -27,7 +27,7 @@
 #
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
-class bucky::params {
+class bucky2::params {
 
   #### Default values for the parameters of the main module class, init.pp
 
@@ -84,11 +84,11 @@ class bucky::params {
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
-      $package = [ 'bucky' ]
+      $package = [ 'bucky2' ]
     }
     'Debian', 'Ubuntu': {
       # main application
-      $package = [ 'bucky' ]
+      $package = [ 'bucky2' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value
@@ -99,15 +99,15 @@ class bucky::params {
   # service parameters
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
-      $initscript         = 'bucky.RedHat'
-      $service_name       = 'bucky'
+      $initscript         = 'bucky2.RedHat'
+      $service_name       = 'bucky2'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
     }
     'Debian', 'Ubuntu': {
-      $initscript         = 'bucky.Debian'
-      $service_name       = 'bucky'
+      $initscript         = 'bucky2.Debian'
+      $service_name       = 'bucky2'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name

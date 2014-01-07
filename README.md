@@ -1,6 +1,6 @@
-# puppet-bucky
+# puppet-bucky2
 
-A puppet module for managing and configuring bucky
+A puppet module for managing and configuring bucky2
 
 https://github.com/trbs/bucky2
 
@@ -23,7 +23,7 @@ Install everything but disable service(s) afterwards:
        status => 'disabled',
      }
 
-For the meaning of all variables please check the bucky website.
+For the meaning of all variables please check the bucky2 website.
 
 ### statsd
 
