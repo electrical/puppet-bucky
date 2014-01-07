@@ -55,6 +55,7 @@ class bucky2::package {
   package { $bucky2::params::package:
     ensure   => $package_ensure,
     provider => 'pip',
+    source => 'git+https://github.com/trbs/bucky2.git#egg=bucky2',
     require  => Class['python'],
   }
 
