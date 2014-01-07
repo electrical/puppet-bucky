@@ -14,7 +14,7 @@ lockfile='/var/lock/subsys/bucky2'
 pidfile='/var/run/bucky2.pid'
 bucky2='/usr/bin/bucky2'
 config='/etc/bucky2/bucky2.conf'
-logfile='/var/log/bucky2.log'
+
 run_user='<%= scope.lookupvar('bucky2::run_as_user') %>'
 
 RETVAL=0
@@ -31,7 +31,7 @@ fi
 start() {
     echo -n $"Starting bucky2 daemon: "
     corelimit="ulimit -S -c 0"
-    runuser -s /bin/bash $run_user -c "$corelimit > /dev/null 2>&1 ; $bucky2 $config >> $logfile 2>&1 &"
+    runuser -s /bin/bash $run_user -c "$corelimit > /dev/null 2>&1 ; $bucky2 $config &"
     RETVAL=$?
 
     local PID=`pgrep -f "${bucky2} ${config}"`
