@@ -28,7 +28,7 @@ class bucky2::files {
     mode    => '0755',
     owner   => 'root',
     group   => 'root',
-    source  => "puppet:///modules/${module_name}/etc/init.d/${bucky2::params::initscript}",
+    content => template("${module_name}/etc/init.d/${bucky2::params::initscript}.erb"),
   }
 
 }
