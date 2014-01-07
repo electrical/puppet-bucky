@@ -40,6 +40,8 @@ class bucky2::params {
   # service status
   $status = 'enabled'
 
+  # user to run the service
+  $run_as_user = 'nobody'
 
   #### Config file defaults
 

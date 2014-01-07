@@ -80,6 +80,7 @@ class bucky2(
   $autoupgrade                 = $bucky2::params::autoupgrade,
   $status                      = $bucky2::params::status,
   $version                     = false,
+  $run_as_user                 = $bucky2::params::run_as_user,
   $statsd_enabled              = $bucky2::params::statsd_enabled,
   $statsd_ip                   = $bucky2::params::statsd_ip,
   $statsd_port                 = $bucky2::params::statsd_port,

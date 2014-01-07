@@ -50,7 +50,7 @@ bucky2_start() {
     log_action_end_msg 3 "Already running"
     exit 0
   fi
-  start-stop-daemon --exec $DAEMON -b -S -m -p $PIDFILE -- $CONFIG
+  start-stop-daemon --exec $DAEMON -b -S -m -p $PIDFILE -c <%= scope.lookupvar('bucky::run_as_user') %> -- $CONFIG
   log_end_msg $?
 }
 
