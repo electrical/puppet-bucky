@@ -1,5 +1,5 @@
 name    'mrsecure-bucky2'
-version '0.2.0'
+version '0.2.1'
 source 'https://github.com/mrsecure/puppet-bucky2'
 author 'ispavailability'
 license 'Apache License, Version 2.0'
