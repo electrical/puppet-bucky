@@ -7,4 +7,4 @@ summary 'Module for managing and configuring bucky2'
 description 'Module for managing and configuring bucky2'
 project_page 'https://github.com/mrsecure/puppet-bucky2'
 dependency 'puppetlabs/stdlib', '>= 3.0.0'
-dependency 'footballradar/python', '0.x'
+
