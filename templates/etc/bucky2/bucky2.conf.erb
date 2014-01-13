@@ -62,6 +62,19 @@ statsd_flush_time = <%= scope.lookupvar('bucky2::statsd_flushtime') %>
 statsd_enabled = False
 <%- end -%>
 
+# If the legacy namespace is enabled, the statsd backend uses the
+# default prefixes except for counters, which are stored directly
+# in stats.NAME for the rate and stats_counts.NAME for the
+# absolute count.  If legacy names are disabled, the prefixes are
+# configurable, and counters are stored under
+# stats.counters.{rate,count} by default.  Any prefix can be set
+# to None to skip it.
+statsd_legacy_namespace = <%= scope.lookupvar('bucky2::statsd_legacy_namespace') %>
+statsd_global_prefix = "<%= scope.lookupvar('bucky2::statsd_global_prefix') %>"
+statsd_prefix_counter = "<%= scope.lookupvar('bucky2::statsd_prefix_counters') %>"
+statsd_prefix_timer = "<%= scope.lookupvar('bucky2::statsd_prefix_timers') %>"
+statsd_prefix_gauge = "<%= scope.lookupvar('bucky2::statsd_prefix_gauges') %>"
+
 # Basic Graphite configuration
 graphite_ip = "<%= scope.lookupvar('bucky2::graphite_host') %>"
 graphite_port = <%= scope.lookupvar('bucky2::graphite_port') %>

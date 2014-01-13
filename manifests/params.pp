@@ -65,6 +65,13 @@ class bucky2::params {
   $statsd_port      = '8125'
   $statsd_flushtime = '10.0'
 
+  # namespace settings
+  $statsd_legacy_namespace = 'True'
+  $statsd_global_prefix    = 'stats'
+  $statsd_prefix_counter   = 'counters'
+  $statsd_prefix_timer     = 'timers'
+  $statsd_prefix_gauge     = 'gauges'
+  
   # graphite
   $graphite_host               = '127.0.0.1'
   $graphite_port               = '2003'
