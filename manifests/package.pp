@@ -26,8 +26,6 @@ class bucky2::package {
 
   #### Package management
 
-  #include python
-
   # set params: in operation
   if $bucky2::ensure == 'present' {
 
@@ -56,7 +54,6 @@ class bucky2::package {
     ensure   => $package_ensure,
     provider => 'pip',
     source => 'git+https://github.com/trbs/bucky2.git#egg=bucky2',
-    #require  => Class['python'],
   }
 
 }
