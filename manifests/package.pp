@@ -26,7 +26,7 @@ class bucky2::package {
 
   #### Package management
 
-  include python
+  #include python
 
   # set params: in operation
   if $bucky2::ensure == 'present' {
