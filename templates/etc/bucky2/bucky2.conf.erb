@@ -71,9 +71,9 @@ statsd_enabled = False
 # to None to skip it.
 statsd_legacy_namespace = <%= scope.lookupvar('bucky2::statsd_legacy_namespace') %>
 statsd_global_prefix = "<%= scope.lookupvar('bucky2::statsd_global_prefix') %>"
-statsd_prefix_counter = "<%= scope.lookupvar('bucky2::statsd_prefix_counters') %>"
-statsd_prefix_timer = "<%= scope.lookupvar('bucky2::statsd_prefix_timers') %>"
-statsd_prefix_gauge = "<%= scope.lookupvar('bucky2::statsd_prefix_gauges') %>"
+statsd_prefix_counter = "<%= scope.lookupvar('bucky2::statsd_prefix_counter') %>"
+statsd_prefix_timer = "<%= scope.lookupvar('bucky2::statsd_prefix_timer') %>"
+statsd_prefix_gauge = "<%= scope.lookupvar('bucky2::statsd_prefix_gauge') %>"
 
 # Basic Graphite configuration
 graphite_ip = "<%= scope.lookupvar('bucky2::graphite_host') %>"
