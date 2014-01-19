@@ -1,5 +1,5 @@
 name    'mrsecure-bucky2'
-version '0.3.0'
+version '0.3.1'
 source 'git clone https://github.com/mrsecure/puppet-bucky2.git'
 author 'mrsecure'
 license 'Apache License, Version 2.0'
