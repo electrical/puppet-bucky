@@ -1,29 +1,29 @@
-# puppet-bucky2
+# puppet-bucky
 
-A puppet module for managing and configuring bucky2
+A puppet module for managing and configuring bucky
 
-https://github.com/trbs/bucky2
+https://github.com/trbs/bucky
 
 
 ## Usage
 
 Installation, make sure service is running and will be started at boot time:
 
-     class { 'bucky2': }
+     class { 'bucky': }
 
 Removal/decommissioning:
 
-     class { 'bucky2':
+     class { 'bucky':
        ensure => 'absent',
      }
 
 Install everything but disable service(s) afterwards:
 
-     class { 'bucky2':
+     class { 'bucky':
        status => 'disabled',
      }
 
-For the meaning of all variables please check the bucky2 website.
+For the meaning of all variables please check the bucky website.
 
 ### statsd
 

@@ -1,4 +1,4 @@
-# == Class: bucky2::config
+# == Class: bucky::config
 #
 # This class exists to coordinate all configuration related actions,
 # functionality and logical units in a central place.
@@ -12,7 +12,7 @@
 # === Examples
 #
 # This class may be imported by other classes to use its functionality:
-#   class { 'bucky2::config': }
+#   class { 'bucky::config': }
 #
 # It is not intended to be used directly by external resources like node
 # definitions or other modules.
@@ -22,24 +22,24 @@
 #
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
-class bucky2::config {
+class bucky::config {
 
-  file { '/etc/bucky2':
+  file { '/etc/bucky':
     ensure => directory,
     mode   => '0644',
     owner  => 'root',
     group  => 'root'
   }
 
-  file { 'bucky2_config':
+  file { 'bucky_config':
     ensure  => present,
-    path    => '/etc/bucky2/bucky2.conf',
+    path    => '/etc/bucky/bucky.conf',
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
-    content => template("${module_name}/etc/bucky2/bucky2.conf.erb"),
-    notify  => Service['bucky2'],
-    require => File['/etc/bucky2']
+    content => template("${module_name}/etc/bucky/bucky.conf.erb"),
+    notify  => Service['bucky'],
+    require => File['/etc/bucky']
   }
 
 }

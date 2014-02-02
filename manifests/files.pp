@@ -1,4 +1,4 @@
-# == Class: bucky2::files
+# == Class: bucky::files
 #
 # This class ensures any extra files to be written
 #
@@ -10,7 +10,7 @@
 #
 # === Examples
 #
-#   class { 'bucky2::files': }
+#   class { 'bucky::files': }
 #
 # It is not intended to be used directly by external resources like node
 # definitions or other modules.
@@ -20,15 +20,15 @@
 #
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
-class bucky2::files {
+class bucky::files {
 
-  file { 'bucky2_init':
+  file { 'bucky_init':
     ensure  => 'present',
-    path    => '/etc/init.d/bucky2',
+    path    => '/etc/init.d/bucky',
     mode    => '0755',
     owner   => 'root',
     group   => 'root',
-    content => template("${module_name}/etc/init.d/${bucky2::params::initscript}.erb"),
+    content => template("${module_name}/etc/init.d/${bucky::params::initscript}.erb"),
   }
 
 }

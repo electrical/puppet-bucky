@@ -1,4 +1,4 @@
-# == Class: bucky2::service
+# == Class: bucky::service
 #
 # This class exists to coordinate all service management related actions,
 # functionality and logical units in a central place.
@@ -16,7 +16,7 @@
 # === Examples
 #
 # This class may be imported by other classes to use its functionality:
-#   class { 'bucky2::service': }
+#   class { 'bucky::service': }
 #
 # It is not intended to be used directly by external resources like node
 # definitions or other modules.
@@ -26,14 +26,14 @@
 #
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
-class bucky2::service {
+class bucky::service {
 
   #### Service management
 
   # set params: in operation
-  if $bucky2::ensure == 'present' {
+  if $bucky::ensure == 'present' {
 
-    case $bucky2::status {
+    case $bucky::status {
       # make sure service is currently running, start it on boot
       'enabled': {
         $service_ensure = 'running'
@@ -59,7 +59,7 @@ class bucky2::service {
       # note: don't forget to update the parameter check in init.pp if you
       #       add a new or change an existing status.
       default: {
-        fail("\"${bucky2::status}\" is an unknown service status value")
+        fail("\"${bucky::status}\" is an unknown service status value")
       }
     }
 
@@ -74,13 +74,13 @@ class bucky2::service {
   }
 
   # action
-  service { 'bucky2':
+  service { 'bucky':
     ensure     => $service_ensure,
     enable     => $service_enable,
-    name       => $bucky2::params::service_name,
-    hasstatus  => $bucky2::params::service_hasstatus,
-    hasrestart => $bucky2::params::service_hasrestart,
-    pattern    => $bucky2::params::service_pattern,
+    name       => $bucky::params::service_name,
+    hasstatus  => $bucky::params::service_hasstatus,
+    hasrestart => $bucky::params::service_hasrestart,
+    pattern    => $bucky::params::service_pattern,
   }
 
 }

@@ -1,4 +1,4 @@
-# == Class: bucky2::package
+# == Class: bucky::package
 #
 # This class exists to coordinate all software package management related
 # actions, functionality and logical units in a central place.
@@ -12,7 +12,7 @@
 # === Examples
 #
 # This class may be imported by other classes to use its functionality:
-#   class { 'bucky2::package': }
+#   class { 'bucky::package': }
 #
 # It is not intended to be used directly by external resources like node
 # definitions or other modules.
@@ -22,17 +22,17 @@
 #
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 #
-class bucky2::package {
+class bucky::package {
 
   #### Package management
 
   # set params: in operation
-  if $bucky2::ensure == 'present' {
+  if $bucky::ensure == 'present' {
 
     # Check if we want to install a specific version or not
-    if $bucky2::version == false {
+    if $bucky::version == false {
 
-      $package_ensure = $bucky2::autoupgrade ? {
+      $package_ensure = $bucky::autoupgrade ? {
         true  => 'latest',
         false => 'present',
       }
@@ -40,7 +40,7 @@ class bucky2::package {
     } else {
 
       # install specific version
-      $package_ensure = $bucky2::version
+      $package_ensure = $bucky::version
 
     }
 
@@ -50,10 +50,10 @@ class bucky2::package {
   }
 
   # action
-  package { $bucky2::params::package:
+  package { $bucky::params::package:
     ensure   => $package_ensure,
     provider => 'pip',
-    source => 'git+https://github.com/trbs/bucky2.git#egg=bucky2',
+    source => 'git+https://github.com/trbs/bucky.git#egg=bucky',
   }
 
 }
