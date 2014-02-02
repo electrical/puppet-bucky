@@ -50,10 +50,15 @@ class bucky::package {
   }
 
   # action
-  package { $bucky::params::package:
-    ensure   => $package_ensure,
-    provider => 'pip',
-    source => 'git+https://github.com/trbs/bucky.git',
+  #package { $bucky::params::package:
+  #  ensure   => $package_ensure,
+  #  provider => 'pip',
+  #  source => 'git+https://github.com/trbs/bucky.git',
+  #}
+
+  exec { "install_${bucky::params::package}":
+    command => '/usr/bin/pip install -q git+https://github.com/trbs/bucky.git#egg=bucky',
+    creates => '/usr/bin/bucky',
   }
 
 }
