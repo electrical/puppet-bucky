@@ -53,7 +53,7 @@ class bucky::package {
   package { $bucky::params::package:
     ensure   => $package_ensure,
     provider => 'pip',
-    source => 'git+https://github.com/trbs/bucky.git#egg=bucky',
+    source => 'git+https://github.com/trbs/bucky.git',
   }
 
 }
