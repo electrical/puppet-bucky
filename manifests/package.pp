@@ -55,11 +55,10 @@ class bucky::package {
   }
 
   # action
-  #package { $bucky::params::package:
-  #  ensure   => $package_ensure,
-  #  provider => 'pip',
-  #  source => 'git+https://github.com/trbs/bucky.git',
-  #}
+  package { 'setproctitle':
+    ensure   => $package_ensure,
+    provider => 'pip',
+  }
 
   exec { "pip_${bucky::params::package}":
     command => "/usr/bin/pip ${pip_action} -q ${pip_source}",
