@@ -52,12 +52,13 @@ class bucky::package {
   package { 'setproctitle':
     ensure   => $package_ensure,
     provider => 'pip',
-    before   => Package["${bucky::params::package}"],
+    require  => Package["${bucky::params::requiredpkgs}"]
   }
 
   package { $bucky::params::package :
     ensure   => $package_ensure,
     provider => 'pip',
+    require  => Package['setproctitle'],
   }
 
 }

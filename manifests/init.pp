@@ -170,6 +170,7 @@ class bucky(
     # we need the software and a working configuration before running a service
     Class['bucky::package'] -> Class['bucky::service']
     Class['bucky::files']   -> Class['bucky::service']
+    Class['bucky::config']  -> Class['bucky::service']
 
   } else {
 
