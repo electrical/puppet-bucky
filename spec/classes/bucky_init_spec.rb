@@ -16,8 +16,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
-
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
     # service.pp
     it { should contain_service('bucky') }
 
@@ -43,7 +43,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
@@ -71,7 +72,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
@@ -99,7 +101,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
@@ -127,7 +130,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
@@ -155,7 +159,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
@@ -183,7 +188,8 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_exec('pip_bucky') }
+    it { should contain_package('bucky').with_provider('pip') }
+    it { should contain_package('setproctitle').with_provider('pip') }
 
     # service.pp
     it { should contain_service('bucky') }
