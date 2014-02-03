@@ -94,12 +94,10 @@ class bucky::params {
     'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
       $package = [ 'bucky' ]
-      $requiredpkgs = [ 'python-devel' ]
     }
     'Debian', 'Ubuntu': {
       # main application
       $package = [ 'bucky' ]
-      $requiredpkgs = [ 'python-dev' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value

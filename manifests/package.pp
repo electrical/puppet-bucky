@@ -49,32 +49,10 @@ class bucky::package {
   }
 
   # action
-  case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
-      package { 'bucky-needs-python-devel':
-        ensure   => $package_ensure,
-        name     => 'python-devel',
-        provider => 'yum',
-      }
-    }
-    'Debian', 'Ubuntu': {
-      package { 'bucky-needs-python-devel':
-        ensure   => $package_ensure,
-        name     => 'python-dev',
-        provider => 'apt'
-      }
-    }
-    default: {
-      fail("\"${module_name}\" provides no package default value
-            for \"${::operatingsystem}\"")
-    }
-  }
-
   package { 'setproctitle':
     ensure   => $package_ensure,
     provider => 'pip',
     before   => Package["${bucky::params::package}"],
-    require  => Package['bucky-needs-python-devel'],
   }
 
   package { $bucky::params::package :
