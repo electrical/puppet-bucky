@@ -49,7 +49,7 @@ class bucky::package {
   }
 
   # action
-  package { $graphite::params::requiredpkgs :
+  package { $bucky::params::requiredpkgs :
     ensure  => installed,
     before  => Package['setproctitle'],
   }
