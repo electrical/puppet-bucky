@@ -1,4 +1,6 @@
-6 Jan 2014 - Manual fork to support bucky2
+2 Feb 2014 - Realign changes for bucky2 features to follow new upstream bucky project
+
+6 Jan 2014 - Manual fork to support bucky2 (mrsecure)
 
 0.0.2 ( Feb 10 2013 )
   Minor fixes and supply of RedHat and Debian based init scripts.
