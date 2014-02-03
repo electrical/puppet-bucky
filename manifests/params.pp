@@ -99,7 +99,7 @@ class bucky::params {
     'Debian', 'Ubuntu': {
       # main application
       $package = [ 'bucky' ]
-      $requiredpkgs = []
+      $requiredpkgs = [ 'python-dev' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value
