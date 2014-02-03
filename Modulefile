@@ -1,6 +1,6 @@
 name    'ispavailability-bucky'
 version '0.4.0'
-source 'https://github.com/electrical/puppet-bucky.git'
+source 'https://github.com/electrical/puppet-bucky'
 author 'ispavailability'
 license 'Apache License, Version 2.0'
 summary 'Module for managing and configuring bucky'
