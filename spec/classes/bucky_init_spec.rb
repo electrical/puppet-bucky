@@ -16,13 +16,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.Debian' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.Debian.erb' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -43,13 +43,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.Debian' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.Debian' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -71,13 +71,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.RedHat' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.RedHat' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -99,13 +99,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.RedHat' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.RedHat' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -127,13 +127,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.RedHat' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.RedHat' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -155,13 +155,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.RedHat' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.RedHat' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }
@@ -183,13 +183,13 @@ describe 'bucky', :type => 'class' do
     it { should contain_class('bucky::service') }
 
     # package.pp
-    it { should contain_package('bucky').with( { 'provider' => 'pip' } ) }
+    it { should contain_package('bucky') }
 
     # service.pp
     it { should contain_service('bucky') }
 
     # files.pp
-    it { should contain_file('bucky_init').with( { 'source' => 'puppet:///modules/bucky/etc/init.d/bucky.RedHat' } ) }
+    it { should contain_file('bucky_init').with( { 'content' => 'puppet:///modules/bucky/templates/etc/init.d/bucky.RedHat' } ) }
 
     # config.pp
     it { should contain_file('/etc/bucky') }

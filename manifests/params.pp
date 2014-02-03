@@ -71,7 +71,7 @@ class bucky::params {
   $statsd_prefix_counter   = 'counters'
   $statsd_prefix_timer     = 'timers'
   $statsd_prefix_gauge     = 'gauges'
-  
+
   # graphite
   $graphite_host               = '127.0.0.1'
   $graphite_port               = '2003'
