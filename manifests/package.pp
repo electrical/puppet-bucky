@@ -45,7 +45,7 @@ class bucky::package {
     }
     $pip_action = 'install'
     $pip_source = 'git+https://github.com/trbs/bucky.git#egg=bucky'
-    $pip_test_cmd = '/usr/bin/pip -q show bucky'
+    $pip_test_cmd = '/usr/bin/pip show bucky | grep Version'
   # set params: removal
   } else {
     $package_ensure = 'purged'
