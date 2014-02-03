@@ -50,7 +50,7 @@ class bucky::package {
   } else {
     $package_ensure = 'purged'
     $pip_action = 'uninstall'
-    $pip_source = ''
+    $pip_source = 'bucky'
     $pip_test_cmd = '/bin/false'
   }
 
