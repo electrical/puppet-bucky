@@ -49,13 +49,18 @@ class bucky::package {
   }
 
   # action
+  package { $graphite::params::requiredpkgs :
+    ensure  => installed,
+    before  => Package['setproctitle'],
+  }
+
   package { 'setproctitle':
     ensure   => $package_ensure,
     provider => 'pip',
     before   => Package["${bucky::params::package}"],
   }
 
-  package { "${bucky::params::package}":
+  package { $bucky::params::package :
     ensure   => $package_ensure,
     provider => 'pip',
   }
