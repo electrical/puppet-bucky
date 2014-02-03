@@ -64,6 +64,7 @@ class bucky::package {
   exec { "pip_${bucky::params::package}":
     command => "/usr/bin/pip ${pip_action} -q ${pip_source}",
     unless => "${pip_test_cmd}",
+    returns => [0, 1]
   }
 
 }
