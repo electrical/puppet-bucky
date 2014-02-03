@@ -25,10 +25,11 @@
 class bucky::config {
 
   file { '/etc/bucky':
-    ensure => directory,
-    mode   => '0644',
-    owner  => 'root',
-    group  => 'root'
+    ensure  => directory,
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
+    require => Package["${bucky::params::package}"],
   }
 
   file { 'bucky_config':

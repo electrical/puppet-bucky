@@ -29,6 +29,7 @@ class bucky::files {
     owner   => 'root',
     group   => 'root',
     content => template("${module_name}/etc/init.d/${bucky::params::initscript}.erb"),
+    require => Package["${bucky::params::package}"],
   }
 
 }
