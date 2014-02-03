@@ -49,7 +49,7 @@ class bucky::package {
   # set params: removal
   } else {
     $package_ensure = 'purged'
-    $pip_action = 'uninstall'
+    $pip_action = 'uninstall -y'
     $pip_source = 'bucky'
     $pip_test_cmd = '/bin/false'
   }
