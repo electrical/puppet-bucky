@@ -67,3 +67,7 @@ For the meaning of all variables please check the bucky website.
        name_strip_duplicates => 'True'
        name_host_trim        => []
     
+
+## Dependencies
+- https://forge.puppetlabs.com/puppetlabs/stdlib
+- https://forge.puppetlabs.com/footballradar/python
