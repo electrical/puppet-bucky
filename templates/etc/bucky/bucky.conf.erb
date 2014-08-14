@@ -57,7 +57,7 @@ statsd_port = <%= scope.lookupvar('bucky::statsd_port') %>
 statsd_enabled = True
 
 # How often stats should be flushed to Graphite.
-statsd_flush_time = <%= scope.lookupvar('bucky::statsd_flushtime') %>
+statsd_flush_time = <%= scope.lookupvar('bucky::statsd_flush_time') %>
 <%- else -%>
 statsd_enabled = False
 <%- end -%>

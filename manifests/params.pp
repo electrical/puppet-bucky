@@ -61,7 +61,7 @@ class bucky::params {
   $statsd_enabled   = false
   $statsd_ip        = '127.0.0.1'
   $statsd_port      = '8125'
-  $statsd_flushtime = '10.0'
+  $statsd_flush_time = '10.0'
 
   # graphite
   $graphite_host               = '127.0.0.1'
