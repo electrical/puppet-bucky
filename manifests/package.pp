@@ -26,8 +26,6 @@ class bucky::package {
 
   #### Package management
 
-  include python
-
   # set params: in operation
   if $bucky::ensure == 'present' {
 
@@ -45,17 +43,22 @@ class bucky::package {
       $package_ensure = $bucky::version
 
     }
-
   # set params: removal
   } else {
     $package_ensure = 'purged'
   }
 
   # action
-  package { $bucky::params::package:
+  package { 'setproctitle':
     ensure   => $package_ensure,
     provider => 'pip',
-    require  => Class['python'],
+    require  => Package["${bucky::params::requiredpkgs}"]
+  }
+
+  package { $bucky::params::package :
+    ensure   => $package_ensure,
+    provider => 'pip',
+    require  => Package['setproctitle'],
   }
 
 }

@@ -40,6 +40,8 @@ class bucky::params {
   # service status
   $status = 'enabled'
 
+  # user to run the service
+  $run_as_user = 'nobody'
 
   #### Config file defaults
 
@@ -63,6 +65,13 @@ class bucky::params {
   $statsd_port      = '8125'
   $statsd_flush_time = '10.0'
 
+  # namespace settings
+  $statsd_legacy_namespace = 'True'
+  $statsd_global_prefix    = 'stats'
+  $statsd_prefix_counter   = 'counters'
+  $statsd_prefix_timer     = 'timers'
+  $statsd_prefix_gauge     = 'gauges'
+
   # graphite
   $graphite_host               = '127.0.0.1'
   $graphite_port               = '2003'
@@ -85,10 +94,12 @@ class bucky::params {
     'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
       # main application
       $package = [ 'bucky' ]
+      $requiredpkgs = [ 'python-devel' ]
     }
     'Debian', 'Ubuntu': {
       # main application
       $package = [ 'bucky' ]
+      $requiredpkgs = [ 'python-dev' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value

@@ -62,6 +62,19 @@ statsd_flush_time = <%= scope.lookupvar('bucky::statsd_flush_time') %>
 statsd_enabled = False
 <%- end -%>
 
+# If the legacy namespace is enabled, the statsd backend uses the
+# default prefixes except for counters, which are stored directly
+# in stats.NAME for the rate and stats_counts.NAME for the
+# absolute count.  If legacy names are disabled, the prefixes are
+# configurable, and counters are stored under
+# stats.counters.{rate,count} by default.  Any prefix can be set
+# to None to skip it.
+statsd_legacy_namespace = <%= scope.lookupvar('bucky::statsd_legacy_namespace') %>
+statsd_global_prefix = "<%= scope.lookupvar('bucky::statsd_global_prefix') %>"
+statsd_prefix_counter = "<%= scope.lookupvar('bucky::statsd_prefix_counter') %>"
+statsd_prefix_timer = "<%= scope.lookupvar('bucky::statsd_prefix_timer') %>"
+statsd_prefix_gauge = "<%= scope.lookupvar('bucky::statsd_prefix_gauge') %>"
+
 # Basic Graphite configuration
 graphite_ip = "<%= scope.lookupvar('bucky::graphite_host') %>"
 graphite_port = <%= scope.lookupvar('bucky::graphite_port') %>
@@ -80,7 +93,7 @@ graphite_reconnect_delay = <%= scope.lookupvar('bucky::graphite_reconnect_delay'
 graphite_pickle_enabled = <%= scope.lookupvar('bucky::graphite_pickle_enable') %>
 graphite_pickle_buffer_size = <%= scope.lookupvar('bucky::graphite_pickle_buffer_size') %>
 
-# Bucky provides these settings to allow the system wide
+# bucky provides these settings to allow the system wide
 # configuration of how metric names are processed before
 # sending to Graphite.
 #
@@ -97,7 +110,7 @@ name_replace_char = '<%= scope.lookupvar('bucky::name_replace_char') %>'
 # a.a.b.c.c.b would be rewritten as a.b.c.b
 name_strip_duplicates = <%= scope.lookupvar('bucky::name_strip_duplicates') %>
 
-# Bucky reverses hostname components to improve the locality
+# bucky reverses hostname components to improve the locality
 # of metric values in Graphite. For instance, "node.company.tld"
 # would be rewritten as "tld.company.node". This setting allows
 # for the specification of hostname components that should

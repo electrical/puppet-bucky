@@ -80,10 +80,16 @@ class bucky(
   $autoupgrade                 = $bucky::params::autoupgrade,
   $status                      = $bucky::params::status,
   $version                     = false,
+  $run_as_user                 = $bucky::params::run_as_user,
   $statsd_enabled              = $bucky::params::statsd_enabled,
   $statsd_ip                   = $bucky::params::statsd_ip,
   $statsd_port                 = $bucky::params::statsd_port,
   $statsd_flush_time           = $bucky::params::statsd_flush_time,
+  $statsd_legacy_namespace     = $bucky::params::statsd_legacy_namespace,
+  $statsd_global_prefix        = $bucky::params::statsd_global_prefix,
+  $statsd_prefix_counter       = $bucky::params::statsd_prefix_counter,
+  $statsd_prefix_timer         = $bucky::params::statsd_prefix_timer,
+  $statsd_prefix_gauge         = $bucky::params::statsd_prefix_gauge,
   $metricsd_enabled            = $bucky::params::metricsd_enabled,
   $metricsd_ip                 = $bucky::params::metricsd_ip,
   $metricsd_port               = $bucky::params::metricsd_port,
@@ -164,6 +170,7 @@ class bucky(
     # we need the software and a working configuration before running a service
     Class['bucky::package'] -> Class['bucky::service']
     Class['bucky::files']   -> Class['bucky::service']
+    Class['bucky::config']  -> Class['bucky::service']
 
   } else {
 
